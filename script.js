@@ -66,8 +66,10 @@ function showScore() {
   quiz.forEach((q, i) => {
     const userAnswer = userAnswers[i];
     const correct = q.answer === userAnswer;
-    resultsHTML += ` <div> <p><strong>Q${i + 1}:</strong> ${q.question}</p> <p>Your answer: ${userAnswer || "No answer"}</p> <p>Correct answer: ${q.answer}</p> <p style="color:${correct ? "green" : "red"}"> ${correct ? "Correct" : "Incorrect"} </p> </div> <hr> `;
+    resultsHTML += ` <div> <p><strong>Question ${i + 1}:</strong> ${q.question}</p> <p>Your answer: ${userAnswer || "No answer"}</p> <p>Correct answer: ${q.answer}</p> <p style="color:${correct ? "green" : "red"}"> ${correct ? "Correct" : "Incorrect"} </p> </div> <hr> `;
   });
+
+  resultsHTML += `<button id="homeBtn">Home</button>`;
   finalScore.innerHTML = resultsHTML;
 
   // Show Go Home button
