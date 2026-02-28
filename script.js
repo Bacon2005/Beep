@@ -15,6 +15,7 @@ const feedback = document.getElementById("feedback");
 const progress = document.getElementById("progress");
 const finalScore = document.getElementById("finalScore");
 const checkBtn = document.getElementById("checkBtn");
+const questionCounter = document.getElementById("questionCounter");
 
 function loadQuestion() {
   const q = quiz[currentQuestion];
@@ -22,6 +23,11 @@ function loadQuestion() {
   answerInput.value = "";
   feedback.textContent = "";
   updateProgress();
+  updateCounter();
+}
+
+function updateCounter() {
+  questionCounter.textContent = `Question ${currentQuestion + 1} / ${quiz.length}`;
 }
 
 function updateProgress() {
@@ -56,8 +62,11 @@ checkBtn.addEventListener("click", () => {
 function showScore() {
   document.querySelector(".card").style.display = "none";
   progress.style.width = "100%";
+
   finalScore.classList.remove("hidden");
   finalScore.textContent = `Final Score: ${score} / ${quiz.length}`;
+
+  document.getElementById("homeBtn").classList.remove("hidden");
 }
 
 loadQuestion();
