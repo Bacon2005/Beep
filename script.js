@@ -16,6 +16,7 @@ const feedback = document.getElementById("feedback");
 const progress = document.getElementById("progress");
 const finalScore = document.getElementById("finalScore");
 const checkBtn = document.getElementById("checkBtn");
+const questionCounter = document.getElementById("questionCounter");
 
 function loadQuestion() {
   const q = quiz[currentQuestion];
@@ -23,6 +24,11 @@ function loadQuestion() {
   answerInput.value = "";
   feedback.textContent = "";
   updateProgress();
+  updateCounter();
+}
+
+function updateCounter() {
+  questionCounter.textContent = `Question ${currentQuestion + 1} / ${quiz.length}`;
 }
 
 function updateProgress() {
@@ -53,6 +59,7 @@ checkBtn.addEventListener("click", () => {
 function showScore() {
   document.querySelector(".card").style.display = "none";
   progress.style.width = "100%";
+
   finalScore.classList.remove("hidden");
   let resultsHTML = `<p>Final Score: ${score} / ${quiz.length}</p>`;
   resultsHTML += "<h3>Review:</h3>";
@@ -62,8 +69,11 @@ function showScore() {
     resultsHTML += ` <div> <p><strong>Question ${i + 1}:</strong> ${q.question}</p> <p>Your answer: ${userAnswer || "No answer"}</p> <p>Correct answer: ${q.answer}</p> <p style="color:${correct ? "green" : "red"}"> ${correct ? "Correct" : "Incorrect"} </p> </div> <hr> `;
   });
 
-  resultsHTML += `<button id="homeBtn">Home</button>`;
+  resultsHTML += `<a href="home.html"><button id="homeBtn">Home</button></a>`;
   finalScore.innerHTML = resultsHTML;
+
+  // Show Go Home button
+  document.getElementById("homeBtn").classList.remove("hidden");
 }
 
 loadQuestion();

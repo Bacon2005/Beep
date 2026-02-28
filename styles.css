@@ -5,11 +5,27 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  min-height: 100vh; /* use min-height instead of height */
 }
 
 .app {
-  width: 400px;
+  width: 100%;
+  max-width: 450px;   /* desktop max */
+  min-width: 390px;   /* mobile minimum */
+  margin: 0 auto;
+  padding: 0 10px;
+}
+
+.card {
+  background: white;
+  padding: 30px;
+  border-radius: 20px;
+  text-align: center;
+  box-shadow: 0 8px 0 rgba(0,0,0,0.1);
+  width: 100%; /* ensure it fills .app width */
+  max-width: 450px;
+  min-width: 390px;
+  box-sizing: border-box; /* include padding in width */
 }
 
 .progress-bar {
@@ -59,6 +75,33 @@ button {
   font-size: 16px;
   font-weight: bold;
   cursor: pointer;
+}
+
+input, button {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+#homeBtn {
+  background: white;
+  color: #58cc02; /* Duolingo green */
+  border: 2px solid #58cc02;
+  margin-top: 15px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+}
+
+#homeBtn:hover {
+  background: #58cc02;
+  color: white;
+}
+
+#questionCounter {
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 10px;
+  font-size: 14px;
 }
 
 button:hover {
