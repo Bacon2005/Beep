@@ -2,25 +2,71 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+    <title>Basic Algebra UI</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>HOME - BEEP</title>
-
-    <link rel="stylesheet" href="home.css" />
 
     <link
       rel="stylesheet"
       href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined"
     />
+    <!-- Link External CSS -->
+    <link rel="stylesheet" href="home.css" />
   </head>
 
   <body>
-    <div class="footer">
-      <footer>
-        <span class="material-symbols-outlined">home</span>
-        <span class="material-symbols-outlined">menu</span>
-        <span class="material-symbols-outlined">search</span>
-        <span class="material-symbols-outlined"> bookmark </span>
-      </footer>
+    <div class="phone">
+      <!-- Header -->
+      <img class="img" src="images/BEEPlogo.png" alt="" />
+      <div class="header">
+        <small>← Module 1, Section 1</small>
+        <h1>Basic Algebra</h1>
+      </div>
+
+      <div class="content-wrapper">
+        <!-- Side Icons -->
+        <div class="side-icons">
+          <a class="icon-circle icon-active" href="compute.html">★</a>
+          <div class="icon-circle">★</div>
+          <div class="icon-circle">⚠</div>
+          <div class="icon-circle">★</div>
+          <div class="icon-circle">★</div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="main-content">
+          <div class="card">
+            <h3>Check your curriculum!</h3>
+            <p>Complete the tutorial to start browsing the lesson plan.</p>
+            <button class="btn-dark">Go to lesson</button>
+          </div>
+
+          <div class="card">
+            <h3>Daily Quests!</h3>
+            <p>Complete five minutes of exercises to level up!</p>
+            <button class="btn-orange">View Quest</button>
+          </div>
+
+          <div class="card">
+            <h3>Want to save your progress?</h3>
+            <p>Create an account to track your learnings!</p>
+            <button class="btn-orange">Log in</button>
+            <button class="btn-dark signup-btn">Sign up</button>
+          </div>
+
+          <div class="stats">
+            <div class="stat-box">🏅 6</div>
+            <div class="stat-box">❤️ 5</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Bottom Navigation -->
+      <div class="nav">
+        <div><span class="material-symbols-outlined"> home </span></div>
+        <div><span class="material-symbols-outlined"> edit </span></div>
+        <div>#</div>
+        <div><span class="material-symbols-outlined"> bookmark </span></div>
+      </div>
     </div>
   </body>
 </html>
