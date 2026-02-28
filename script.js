@@ -3,11 +3,12 @@ const quiz = [
   { question: "Area of a square with side 5", answer: "25" },
   { question: "√81", answer: "9" },
   { question: "Sum of angles in a triangle", answer: "180" },
-  { question: "Positive solution of x² = 4", answer: "2" }
+  { question: "Positive solution of x² = 4", answer: "2" },
 ];
 
 let currentQuestion = 0;
 let score = 0;
+let userAnswers = [];
 
 const questionText = document.getElementById("questionText");
 const answerInput = document.getElementById("answerInput");
@@ -25,21 +26,17 @@ function loadQuestion() {
 }
 
 function updateProgress() {
-  progress.style.width = ((currentQuestion) / quiz.length) * 100 + "%";
+  progress.style.width = (currentQuestion / quiz.length) * 100 + "%";
 }
 
 checkBtn.addEventListener("click", () => {
   const userAnswer = answerInput.value.trim();
-
   if (userAnswer === "") return;
 
+  userAnswers.push(userAnswer);
+
   if (userAnswer === quiz[currentQuestion].answer) {
-    feedback.textContent = "Correct!";
-    feedback.className = "correct";
     score++;
-  } else {
-    feedback.textContent = "Incorrect!";
-    feedback.className = "incorrect";
   }
 
   setTimeout(() => {
@@ -57,7 +54,14 @@ function showScore() {
   document.querySelector(".card").style.display = "none";
   progress.style.width = "100%";
   finalScore.classList.remove("hidden");
-  finalScore.textContent = `Final Score: ${score} / ${quiz.length}`;
+  let resultsHTML = `<p>Final Score: ${score} / ${quiz.length}</p>`;
+  resultsHTML += "<h3>Review:</h3>";
+  quiz.forEach((q, i) => {
+    const userAnswer = userAnswers[i];
+    const correct = q.answer === userAnswer;
+    resultsHTML += ` <div> <p><strong>Q${i + 1}:</strong> ${q.question}</p> <p>Your answer: ${userAnswer || "No answer"}</p> <p>Correct answer: ${q.answer}</p> <p style="color:${correct ? "green" : "red"}"> ${correct ? "Correct" : "Incorrect"} </p> </div> <hr> `;
+  });
+  finalScore.innerHTML = resultsHTML;
 }
 
 loadQuestion();
