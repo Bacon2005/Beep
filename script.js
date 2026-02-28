@@ -1,28 +1,63 @@
-function checkQuiz() {
-  const questions = document.querySelectorAll(".question");
-  let score = 0;
+const quiz = [
+  { question: "Solve: 3x − 5 = 16", answer: "7" },
+  { question: "Area of a square with side 5", answer: "25" },
+  { question: "√81", answer: "9" },
+  { question: "Sum of angles in a triangle", answer: "180" },
+  { question: "Positive solution of x² = 4", answer: "2" }
+];
 
-  questions.forEach((question, index) => {
-    const correctAnswer = question.dataset.correct;
-    const selected = question.querySelector("input[type='radio']:checked");
-    const resultDiv = question.querySelector(".result");
+let currentQuestion = 0;
+let score = 0;
 
-    if (!selected) {
-      resultDiv.textContent = "Please select an answer.";
-      resultDiv.style.color = "orange";
-      return;
-    }
+const questionText = document.getElementById("questionText");
+const answerInput = document.getElementById("answerInput");
+const feedback = document.getElementById("feedback");
+const progress = document.getElementById("progress");
+const finalScore = document.getElementById("finalScore");
+const checkBtn = document.getElementById("checkBtn");
 
-    if (selected.value === correctAnswer) {
-      resultDiv.textContent = "Correct!";
-      resultDiv.style.color = "green";
-      score++;
-    } else {
-      resultDiv.textContent = "Incorrect.";
-      resultDiv.style.color = "red";
-    }
-  });
-
-  document.getElementById("score").textContent =
-    "Score: " + score + " / " + questions.length;
+function loadQuestion() {
+  const q = quiz[currentQuestion];
+  questionText.textContent = q.question;
+  answerInput.value = "";
+  feedback.textContent = "";
+  updateProgress();
 }
+
+function updateProgress() {
+  progress.style.width = ((currentQuestion) / quiz.length) * 100 + "%";
+}
+
+checkBtn.addEventListener("click", () => {
+  const userAnswer = answerInput.value.trim();
+
+  if (userAnswer === "") return;
+
+  if (userAnswer === quiz[currentQuestion].answer) {
+    feedback.textContent = "Correct!";
+    feedback.className = "correct";
+    score++;
+  } else {
+    feedback.textContent = "Incorrect!";
+    feedback.className = "incorrect";
+  }
+
+  setTimeout(() => {
+    currentQuestion++;
+
+    if (currentQuestion < quiz.length) {
+      loadQuestion();
+    } else {
+      showScore();
+    }
+  }, 800);
+});
+
+function showScore() {
+  document.querySelector(".card").style.display = "none";
+  progress.style.width = "100%";
+  finalScore.classList.remove("hidden");
+  finalScore.textContent = `Final Score: ${score} / ${quiz.length}`;
+}
+
+loadQuestion();
