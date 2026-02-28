@@ -43,8 +43,6 @@ body {
   transition: width 0.3s;
 }
 
-<<<<<<< HEAD
-=======
 .card {
   background: white;
   padding: 30px;
@@ -52,7 +50,6 @@ body {
   text-align: center;
   box-shadow: 0 8px 0 rgba(0, 0, 0, 0.1);
 }
->>>>>>> 70905679b8a86e2107d0439ae4b39f0c644385c4
 
 h2 {
   margin-bottom: 20px;
@@ -130,24 +127,6 @@ button:hover {
 
 #finalScore {
   margin-top: 15px;
-<<<<<<< HEAD
-  text-align: center;
-  font-size: 18px;
-  color: white;
-  font-weight: bold;
-}
-
-@media (max-width: 400px) {
-  .card {
-    padding: 20px; /* slightly smaller padding for tiny screens */
-  }
-
-  input, button {
-    font-size: 14px;
-    padding: 12px;
-  }
-}
-=======
   text-align: left;
   font-size: 16px;
   color: #333;
@@ -159,4 +138,3 @@ button:hover {
   border-radius: 12px;
   box-shadow: 0 8px 0 rgba(0, 0, 0, 0.1);
 }
->>>>>>> 70905679b8a86e2107d0439ae4b39f0c644385c4
