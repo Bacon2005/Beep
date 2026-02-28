@@ -69,6 +69,9 @@ function showScore() {
     resultsHTML += ` <div> <p><strong>Q${i + 1}:</strong> ${q.question}</p> <p>Your answer: ${userAnswer || "No answer"}</p> <p>Correct answer: ${q.answer}</p> <p style="color:${correct ? "green" : "red"}"> ${correct ? "Correct" : "Incorrect"} </p> </div> <hr> `;
   });
   finalScore.innerHTML = resultsHTML;
+
+  // Show Go Home button
+  document.getElementById("homeBtn").classList.remove("hidden");
 }
 
 loadQuestion();
