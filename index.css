@@ -1,16 +1,14 @@
-/* Reset page and center content */
 body,
 html {
   margin: 0;
   padding: 0;
-  width: 100%;
   height: 100%;
   font-family: Arial, sans-serif;
-  display: flex;
-  justify-content: center;
 
-  width: 390px;
-  height: 100vh; /* take full screen height */
+  display: flex;
+  justify-content: center; /* horizontal center */
+  align-items: center; /* vertical center */
+
   background: #ffffff;
 }
 
@@ -32,13 +30,12 @@ html {
 
 /* Container for the main content */
 .container {
-  width: 100%;
-  max-width: 390px; /* phone width */
-  height: 100%;
+  width: 390px; /* fixed phone width */
+  height: 100vh; /* full screen height */
   display: flex;
   flex-direction: column;
   align-items: center;
-  position: relative; /* needed for absolute button */
+  position: relative;
   padding: 20px;
   box-sizing: border-box;
 }
