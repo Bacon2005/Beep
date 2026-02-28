@@ -69,7 +69,7 @@ function showScore() {
     resultsHTML += ` <div> <p><strong>Question ${i + 1}:</strong> ${q.question}</p> <p>Your answer: ${userAnswer || "No answer"}</p> <p>Correct answer: ${q.answer}</p> <p style="color:${correct ? "green" : "red"}"> ${correct ? "Correct" : "Incorrect"} </p> </div> <hr> `;
   });
 
-  resultsHTML += `<button id="homeBtn">Home</button>`;
+  resultsHTML += `<a href="home.html"><button id="homeBtn">Home</button></a>`;
   finalScore.innerHTML = resultsHTML;
 
   // Show Go Home button
